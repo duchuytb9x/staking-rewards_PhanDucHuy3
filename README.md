@@ -88,15 +88,20 @@ Finally, you should see a GraphQL playground is showing in the explorer and the 
 For the `subql-starter` project, you can try to query with the following code to get a taste of how it works.
 
 ````graphql
-{
-  query{
-    starterEntities(first:10){
-      nodes{
-        field1,
-        field2,
-        field3
-      }
-    }
-  }
+query {
+	sumRewards(
+		filter: { id: { equalTo: "16jWQMBXZNxfgXJmVL61gMX4uqtc9WTXV3c8DGx6DUKejm7" } }
+	) {
+		nodes {
+			blockheight
+			id
+			totalReward
+			stakingRewardsByAccountId {
+				nodes {
+					balance
+				}
+			}
+		}
+	}
 }
 ````
